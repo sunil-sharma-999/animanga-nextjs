@@ -12,11 +12,13 @@ import 'react-mde/lib/styles/css/react-mde-all.css';
 // import { getDefaultToolbarCommands } from 'react-mde';
 import Showdown from 'showdown';
 
+import useGetReviews from '../hooks/useGetReviews';
+
 const ReviewForm = ({ type, id }) => {
-  const [value, setvalue] = useState('');
   const [selectedTab, setSelectedTab] = React.useState('write');
   const [err, setErr] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [value, setvalue] = useState(null);
 
   const {
     authCheck: authState,
@@ -24,25 +26,13 @@ const ReviewForm = ({ type, id }) => {
     reviews: { myreview, currentItemReviews },
   } = useSelector((state) => state);
 
-  const router = useRouter();
-
-  useLayoutEffect(() => {
-    // if review is null in local storage
-    if (!localStorage.getItem('review')) {
-      localStorage.setItem('review', myreview);
-      setvalue(myreview || `> hello ${username}`);
-    } else {
-      setvalue(localStorage.getItem('review'));
-    }
-  }, [myreview, username]);
+  useGetReviews({ type, id, authState });
 
   useEffect(() => {
-    const timeOut = setTimeout(
-      () => localStorage.setItem('review', value),
-      2000,
-    );
-    return () => clearTimeout(timeOut);
-  }, [value]);
+    setvalue(myreview || '> hello world');
+  }, [myreview]);
+
+  const router = useRouter();
 
   const submitHandler = async (e) => {
     e.preventDefault();
