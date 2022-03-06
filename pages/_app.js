@@ -3,9 +3,12 @@ import '../styles/globals.css';
 import { store } from '../store/store';
 import Head from 'next/head';
 import Navbar from '../components/navbar/Navbar';
-import Auth from './Auth';
+import useAuthCheck from '../hooks/useAuthCheck';
+import useGetDoc from '../hooks/useGetDoc';
 
 function MyApp({ Component, pageProps }) {
+  useAuthCheck();
+  useGetDoc('users');
   return (
     <>
       <Head>
@@ -14,7 +17,7 @@ function MyApp({ Component, pageProps }) {
       <Provider store={store}>
         <div className="app bg-black/90 min-h-screen my-auto flex flex-col items-center">
           <Navbar />
-          <Auth Component={Component} {...pageProps} />
+          return <Component {...pageProps} />;
         </div>
       </Provider>
     </>
