@@ -12,7 +12,6 @@ const addReview = async ({
     username: username,
     review,
   };
-  console.log(review);
 
   const docRef = doc(db, 'reviews', collectionName);
 
