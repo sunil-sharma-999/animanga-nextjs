@@ -9,7 +9,10 @@ const Review = ({ re, converter }) => {
   const [readmore, setreadmore] = useState(false);
 
   const md = converter.makeHtml(re.review);
-  const review = readmore ? md : md.substring(0, 200);
+  let review = md;
+  if (md.length > 200) {
+    review = readmore ? md : md.substring(0, 200);
+  }
 
   return (
     <div className="bg-white rounded-md text-black px-4 py-2 pb-4 ">
@@ -31,23 +34,25 @@ const Review = ({ re, converter }) => {
           dangerouslySetInnerHTML={{
             __html: review,
           }}></div>
-        <div
-          className="text-purple-600 cursor-pointer flex justify-end w-full"
-          onClick={() => setreadmore((prev) => !prev)}>
-          <div className="flex items-center">
-            {!readmore ? (
-              <>
-                Read More
-                <AiFillCaretDown />
-              </>
-            ) : (
-              <>
-                <AiFillCaretUp />
-                Close
-              </>
-            )}
+        {md.length > 200 && (
+          <div
+            className="text-purple-600 cursor-pointer flex justify-end w-full"
+            onClick={() => setreadmore((prev) => !prev)}>
+            <div className="flex items-center">
+              {!readmore ? (
+                <>
+                  Read More
+                  <AiFillCaretDown />
+                </>
+              ) : (
+                <>
+                  <AiFillCaretUp />
+                  Close
+                </>
+              )}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );
