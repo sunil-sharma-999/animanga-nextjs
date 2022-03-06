@@ -41,4 +41,6 @@ Future Mini Goals 👷‍♂️
 
 [Vercel for 2.0](https://animanga-kohl.vercel.app)
 
+[Vercel link for latest build](https://animanga-nextjs.vercel.app/)
+
 Made by: [Sunil Sharma](https://linktr.ee/Sunil.sharma.9)
