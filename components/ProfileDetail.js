@@ -27,7 +27,7 @@ const ProfileDetail = () => {
             Logout
           </button>
           {userData.username && (
-            <div className="text-4xl flex">
+            <div className="text-4xl mx-auto flex-col sm:flex-row sm:m-0 flex">
               Welcome
               <motion.h1
                 className="ml-2 bg-clip-text text-transparent bg-gradient-to-r from-fuchsia-700 via-orange-500 to-yellow-500 filter saturate-150 brightness-110"
@@ -38,7 +38,7 @@ const ProfileDetail = () => {
             </div>
           )}
         </div>
-        <p className="text-xl my-2">
+        <p className="text-xl my-2 mx-[5vw] sm:max-w-none">
           Now you can track your favorite Manga and Anime !!!
         </p>
         <Favorites data={userData.favorites} />

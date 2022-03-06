@@ -18,7 +18,7 @@ const Account = ({ children, loading, error, type }) => {
           <motion.div
             initial={{ x: -100 }}
             animate={{ x: 0 }}
-            className="w-full h-1 bg-gradient-to-r from-red-500 via-purple-500 to-red-500"
+            className="w-full h-1 bg-gradient-to-r from-[#EB1D02] via-[#DB00CD] to-[#500CE8]"
           />
         )}
         {loading && <Loading type={type} />}

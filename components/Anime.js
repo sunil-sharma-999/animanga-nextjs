@@ -45,13 +45,15 @@ const Anime = ({ id }) => {
       {!isFetching && isSuccess && results.data && (
         <div className="text-gray-300 self-start mt-4">
           <div className="top flex flex-col sm:flex-row">
-            <div className="image-wrap w-58 m-auto sm:mx-0 items-center  h-full flex flex-col">
-              <Image
-                layout="fill"
-                src={results.data.images.jpg.image_url}
-                alt={results.data.title}
-                className="w-full h-full"
-              />
+            <div className="image-wrap h-72 w-48 m-auto sm:mx-0 items-center flex flex-col relative">
+              <div className="h-full w-full relative">
+                <Image
+                  layout="fill"
+                  src={results.data.images.jpg.image_url}
+                  alt={results.data.title}
+                  className="object-cover object-center"
+                />
+              </div>
               <div
                 className="fav overflow-hidden rounded-sm bg-white w-full text-4xl mt-2 text-black cursor-pointer py-1"
                 onClick={async () => {

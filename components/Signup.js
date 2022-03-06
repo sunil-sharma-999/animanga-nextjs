@@ -48,7 +48,7 @@ const Signup = ({ setType }) => {
           type="password"
           label="Confirm Password"
           required={true}
-          name="password"
+          name="cpassword"
           placeholder="* * * * * *"
         />
 
