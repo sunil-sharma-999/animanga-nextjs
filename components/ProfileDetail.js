@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import authHelperFunc from '../helper/authHelperFunc';
 import useGetDoc from '../hooks/useGetDoc';
 import { authActions } from '../store/slices/authSlice';
@@ -8,7 +8,7 @@ import { motion } from 'framer-motion';
 
 const ProfileDetail = () => {
   const { logOutHandler } = authHelperFunc();
-  const { userData } = useGetDoc('users');
+  const { userData } = useSelector((state) => state);
   const dispatch = useDispatch();
 
   return (

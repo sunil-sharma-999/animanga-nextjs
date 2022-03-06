@@ -3,7 +3,7 @@ import '../styles/globals.css';
 import { store } from '../store/store';
 import Head from 'next/head';
 import Navbar from '../components/navbar/Navbar';
-import Auth from './Auth';
+import Auth from '../components/Auth';
 
 function MyApp({ Component, pageProps }) {
   return (

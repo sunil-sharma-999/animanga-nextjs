@@ -1,12 +1,12 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import ProfileDetail from '../../components/ProfileDetail';
 import Signin from '../../components/Signin';
 import Signup from '../../components/Signup';
-import useAuthCheck from '../../hooks/useAuthCheck';
 
 const Profile = () => {
   const [type, setType] = useState('signin');
-  const authState = useAuthCheck();
+  const authState = useSelector((state) => state.authCheck);
 
   return (
     <>
