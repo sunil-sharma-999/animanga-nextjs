@@ -1,6 +1,5 @@
 /* eslint-disable react/no-children-prop */
 import Link from 'next/link';
-import { CgProfile } from 'react-icons/cg';
 import { useSelector } from 'react-redux';
 import Showdown from 'showdown';
 import Review from './Review';

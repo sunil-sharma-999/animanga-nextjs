@@ -9,10 +9,8 @@ import { AiFillDelete } from 'react-icons/ai';
 import { useRouter } from 'next/router';
 import ReactMde from 'react-mde';
 import 'react-mde/lib/styles/css/react-mde-all.css';
-import { getDefaultToolbarCommands } from 'react-mde';
+// import { getDefaultToolbarCommands } from 'react-mde';
 import Showdown from 'showdown';
-
-console.log(getDefaultToolbarCommands());
 
 const ReviewForm = ({ type, id }) => {
   const [value, setvalue] = useState('');
@@ -29,17 +27,22 @@ const ReviewForm = ({ type, id }) => {
   const router = useRouter();
 
   useLayoutEffect(() => {
-    localStorage.setItem('review', myreview);
-    setvalue(localStorage.getItem('review'));
-  }, [myreview]);
+    // if review is null in local storage
+    if (!localStorage.getItem('review')) {
+      localStorage.setItem('review', myreview);
+      setvalue(myreview || `> hello ${username}`);
+    } else {
+      setvalue(localStorage.getItem('review'));
+    }
+  }, [myreview, username]);
 
-  // useEffect(() => {
-  //   const timeOut = setTimeout(
-  //     () => localStorage.setItem('review', value),
-  //     2000,
-  //   );
-  //   return () => clearTimeout(timeOut);
-  // }, [value]);
+  useEffect(() => {
+    const timeOut = setTimeout(
+      () => localStorage.setItem('review', value),
+      2000,
+    );
+    return () => clearTimeout(timeOut);
+  }, [value]);
 
   const submitHandler = async (e) => {
     e.preventDefault();
