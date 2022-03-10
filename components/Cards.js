@@ -11,6 +11,8 @@ const Cards = ({ type, page = 1, q = '' }) => {
     userData: { favList },
   } = useSelector((state) => state);
 
+  console.log(q);
+
   const {
     data: results,
     error,
@@ -33,15 +35,22 @@ const Cards = ({ type, page = 1, q = '' }) => {
   return (
     <>
       <div className="arrows max-w-screen-lg flex justify-between text-white w-10/12 mt-8">
-        <Link href={`/${type}/${+page - 1}`}>
+        <Link
+          href={
+            !!q ? `/search/${type}/${q}/${+page - 1}` : `/${type}/${+page - 1}`
+          }>
           <a className={+page <= 1 ? 'disabled' : ''}>&larr;</a>
         </Link>
         <Link
-          href={`/${type}/${+page + 1}`}
-          className={
-            isSuccess && results.pagination.has_next_page ? '' : 'disabled'
+          href={
+            !!q ? `/search/${type}/${q}/${+page + 1}` : `/${type}/${+page + 1}`
           }>
-          &rarr;
+          <a
+            className={
+              isSuccess && results.pagination.has_next_page ? '' : 'disabled'
+            }>
+            &rarr;
+          </a>
         </Link>
       </div>
       {isFetching && <Loading />}
