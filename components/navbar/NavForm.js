@@ -1,17 +1,16 @@
 import React, { useRef } from 'react';
 import { MdClear } from 'react-icons/md';
 
-const NavForm = ({ handler, clearSearch, classnames, formclass }) => {
+const NavForm = ({ handler, clearSearch }) => {
   const inputRef = useRef('');
   const formRef = useRef();
 
   return (
     <form
       onSubmit={(e) => handler(e, inputRef.current, formRef.current)}
-      className={`${formclass}`}
+      className="search flex mb-3 md:mb-0"
       ref={formRef}>
-      <div
-        className={`bg-white justify-between items-center rounded-md border-none max-w-sm mx-auto h-10 overflow-hidden w-full ml-auto ${classnames}`}>
+      <div className="bg-white justify-between items-center rounded-md border-none max-w-sm mx-auto h-10 overflow-hidden w-full ml-auto flex">
         <select
           name="selection"
           id="selection"

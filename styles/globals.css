@@ -9,10 +9,45 @@
   }
 }
 
+@responsive {
+  .toolbar-md {
+    grid-template-columns: max-content 1fr max-content max-content;
+    grid-template-rows: 1fr;
+    grid-template-areas: 'logo links search profile';
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+/* navbar grid */
+
+.toolbar {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  grid-template-columns: max-content 1fr max-content;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: 'menu logo profile' 'search search search';
+}
+
+.profile-btn {
+  grid-area: profile;
+}
+
+.menu-btn {
+  grid-area: menu;
+}
+
+.search {
+  grid-area: search;
+}
+
+.logo {
+  grid-area: logo;
 }
 
 .err {
