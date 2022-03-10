@@ -34,6 +34,10 @@
   grid-template-areas: 'menu logo profile' 'search search search';
 }
 
+.links {
+  grid-area: links;
+}
+
 .profile-btn {
   grid-area: profile;
 }
