@@ -1,14 +1,12 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import authHelperFunc from '../helper/authHelperFunc';
-import useGetDoc from '../hooks/useGetDoc';
+import { logOutHandler } from '../helper/authHelperFunc';
 import { authActions } from '../store/slices/authSlice';
 import Favorites from './Favorites';
 import { motion } from 'framer-motion';
 
 const ProfileDetail = () => {
-  const { logOutHandler } = authHelperFunc();
-  const { userData } = useSelector((state) => state);
+  const userData = useSelector((state) => state.userData);
   const dispatch = useDispatch();
 
   return (

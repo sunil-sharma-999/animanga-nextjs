@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import useAuthCheck from '../hooks/useAuthCheck';
-import authHelperFunc from '../helper/authHelperFunc';
+import { signinHandler } from '../helper/authHelperFunc';
 import Account from './UI/Account';
 import MethodUI from './UI/MethodUI';
 import Input from './Input';
@@ -12,7 +12,6 @@ const Signin = ({ setType }) => {
   const authState = useAuthCheck();
   const router = useRouter();
 
-  const { signinHandler } = authHelperFunc();
   if (authState) {
     return router.push('/profile');
   }

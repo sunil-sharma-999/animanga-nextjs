@@ -1,11 +1,11 @@
 import { useRouter } from 'next/router';
-import Cards from '../../../components/Cards';
+import Manga from '../../../components/Manga';
 
 const Index = () => {
   const {
-    query: { id = 1 },
+    query: { malid },
   } = useRouter();
-  return <Cards type="anime" page={id} />;
+  return <Manga id={malid} />;
 };
 
 export default Index;

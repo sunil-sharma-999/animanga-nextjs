@@ -2,7 +2,7 @@ import { useState } from 'react';
 import useAuthCheck from '../hooks/useAuthCheck';
 import Account from './UI/Account';
 import MethodUI from './UI/MethodUI';
-import authHelperFunc from '../helper/authHelperFunc';
+import { signUpHandler } from '../helper/authHelperFunc';
 import { motion } from 'framer-motion';
 import Input from './Input';
 import { useRouter } from 'next/router';
@@ -11,7 +11,6 @@ const Signup = ({ setType }) => {
   const [error, seterror] = useState(null);
   const [loading, setloading] = useState(false);
   const authState = useAuthCheck();
-  const { signUpHandler } = authHelperFunc();
   const router = useRouter();
 
   if (authState) {

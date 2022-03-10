@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import ReviewForm from '../../../components/ReviewForm';
+import ReviewForm from '../../components/ReviewForm';
 
 const Index = () => {
   const {

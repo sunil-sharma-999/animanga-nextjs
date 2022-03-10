@@ -1,14 +1,13 @@
 import React from 'react';
 import { IoHeartCircleSharp } from 'react-icons/io5';
 import addFavorites from '../helper/addFavorites';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { userActions } from '../store/slices/userSlice';
 import Link from 'next/link';
 import Image from 'next/image';
 
 const Card = (props) => {
   const dispatch = useDispatch();
-  const { authCheck } = useSelector((state) => state);
 
   const score = props.data.score || props.data.scored || '-';
 
@@ -45,7 +44,7 @@ const Card = (props) => {
           <div
             className="fav cursor-pointer"
             onClick={async () => {
-              if (authCheck) {
+              if (props.authProp) {
                 dispatch(
                   userActions.updateFavorite({
                     data: props.data,
@@ -55,7 +54,7 @@ const Card = (props) => {
                 await addFavorites({
                   data: props.data,
                   typename: props.type,
-                  authCheck,
+                  authCheck: props.authProp,
                 }).catch((err) => alert(err.message));
               } else {
                 alert(

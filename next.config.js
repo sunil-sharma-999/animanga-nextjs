@@ -1,4 +1,8 @@
-module.exports = {
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
+
+module.exports = withBundleAnalyzer({
   async redirects() {
     return [
       {
@@ -12,4 +16,4 @@ module.exports = {
   images: {
     domains: ['cdn.myanimelist.net'],
   },
-};
+});
