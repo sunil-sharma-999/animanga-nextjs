@@ -14,7 +14,7 @@ const NavForm = ({ handler, clearSearch }) => {
         <select
           name="selection"
           id="selection"
-          className="bg-white h-full cursor-pointer text-gray-800 pl-2">
+          className="bg-white outline-none border-0 h-full cursor-pointer text-gray-800 pl-2">
           <option value="manga" className="text-black">
             Manga
           </option>

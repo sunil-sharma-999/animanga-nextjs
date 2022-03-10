@@ -42,7 +42,6 @@ const Navbar = () => {
     e.preventDefault();
     const formData = new FormData(formNode);
     const q = inputNode.value;
-    inputNode.value = '';
     const path = `/search/${formData.get('selection')}/${q}/1`;
     router.push(path);
   };
