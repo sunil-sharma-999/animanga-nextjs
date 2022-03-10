@@ -71,11 +71,12 @@ button.active {
   opacity: 1;
   background-color: white;
   font-weight: 900;
-  padding: 0.4rem 1rem;
   border: none;
   display: flex;
   border-radius: 0.2rem;
   cursor: pointer;
+  padding: 0.5rem 0.75rem;
+  font-size: 1.25rem;
 }
 .arrows a.disabled {
   opacity: 0.5;

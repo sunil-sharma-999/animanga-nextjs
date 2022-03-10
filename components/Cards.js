@@ -5,6 +5,7 @@ import { dateConvertor } from '../helper/dateConvertor';
 import Loading from './UI/Loading';
 import { useGetTopQuery } from '../store/api/api';
 import { motion } from 'framer-motion';
+import { MdNavigateBefore, MdNavigateNext } from 'react-icons/md';
 
 const Cards = ({ type, page = 1, q = '' }) => {
   const {
@@ -37,7 +38,9 @@ const Cards = ({ type, page = 1, q = '' }) => {
           href={
             !!q ? `/search/${type}/${q}/${+page - 1}` : `/${type}/${+page - 1}`
           }>
-          <a className={+page <= 1 ? 'disabled' : ''}>&larr;</a>
+          <a className={+page <= 1 ? 'disabled' : ''}>
+            <MdNavigateBefore />
+          </a>
         </Link>
         <Link
           href={
@@ -47,7 +50,7 @@ const Cards = ({ type, page = 1, q = '' }) => {
             className={
               isSuccess && results.pagination.has_next_page ? '' : 'disabled'
             }>
-            &rarr;
+            <MdNavigateNext />
           </a>
         </Link>
       </div>
