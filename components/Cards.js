@@ -11,8 +11,6 @@ const Cards = ({ type, page = 1, q = '' }) => {
     userData: { favList },
   } = useSelector((state) => state);
 
-  console.log(q);
-
   const {
     data: results,
     error,

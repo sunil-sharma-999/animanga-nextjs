@@ -18,7 +18,7 @@ const ReviewForm = ({ type, id }) => {
   const [selectedTab, setSelectedTab] = React.useState('write');
   const [err, setErr] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [value, setvalue] = useState(null);
+  const [value, setvalue] = useState('');
 
   const {
     authCheck: authState,
