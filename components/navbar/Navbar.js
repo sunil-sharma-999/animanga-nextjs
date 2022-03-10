@@ -119,21 +119,29 @@ const Navbar = () => {
           </Typography>
 
           <Box sx={{ flexGrow: 1 }} className="hidden md:flex">
-            <Link href="/manga/1" passHref={true}>
-              <Button
-                className={`link ${pathname.includes('manga') ? 'active' : ''}`}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}>
-                Top Manga
-              </Button>
+            <Link href="/manga/1">
+              <a>
+                <Button
+                  className={`link ${
+                    pathname.includes('manga') ? 'active' : ''
+                  }`}
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: 'white', display: 'block' }}>
+                  Top Manga
+                </Button>
+              </a>
             </Link>
-            <Link href="/anime/1" passHref={true}>
-              <Button
-                onClick={handleCloseNavMenu}
-                className={`link ${pathname.includes('anime') ? 'active' : ''}`}
-                sx={{ my: 2, color: 'white', display: 'block' }}>
-                Top Anime
-              </Button>
+            <Link href="/anime/1">
+              <a>
+                <Button
+                  onClick={handleCloseNavMenu}
+                  className={`link ${
+                    pathname.includes('anime') ? 'active' : ''
+                  }`}
+                  sx={{ my: 2, color: 'white', display: 'block' }}>
+                  Top Anime
+                </Button>
+              </a>
             </Link>
             <NavForm
               formclass="ml-auto flex justify-center items-center mr-4"
