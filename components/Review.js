@@ -20,8 +20,10 @@ const Review = ({ re, converter }) => {
         <div className="profile-wrap flex items-center gap-2">
           <h1 className="name text-lg font-medium">@{re.username}</h1>
           {re.areYouAuthor && (
-            <Link href="/profile" passHref>
-              <CgProfile className="cursor-pointer" />
+            <Link href="/profile">
+              <a>
+                <CgProfile className="cursor-pointer" />
+              </a>
             </Link>
           )}
         </div>
