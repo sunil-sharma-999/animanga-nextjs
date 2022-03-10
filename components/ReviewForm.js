@@ -1,5 +1,5 @@
 /* eslint-disable react/no-children-prop */
-import React, { useEffect, useLayoutEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import addReview from '../helper/addReview';
 import { deleteReview } from '../helper/deleteReview';
@@ -9,7 +9,6 @@ import { AiFillDelete } from 'react-icons/ai';
 import { useRouter } from 'next/router';
 import ReactMde from 'react-mde';
 import 'react-mde/lib/styles/css/react-mde-all.css';
-// import { getDefaultToolbarCommands } from 'react-mde';
 import Showdown from 'showdown';
 
 import useGetReviews from '../hooks/useGetReviews';
