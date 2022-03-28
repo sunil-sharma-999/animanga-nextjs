@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteUserHandler } from '../../helper/authHelperFunc';
-import Input from '../Input';
+import Input from '../form/Input';
 import Account from '../UI/Account';
 import OptionWrapper from './OptionWrapper';
 

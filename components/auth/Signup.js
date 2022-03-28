@@ -3,7 +3,7 @@ import Account from '../components/UI/Account';
 import MethodUI from '../components/UI/MethodUI';
 import { signUpHandler } from '../helper/authHelperFunc';
 import { motion } from 'framer-motion';
-import Input from '../components/Input';
+import Input from '../../components/form/Input';
 import { useRouter } from 'next/router';
 import useAuthCheck from '../../hooks/useAuthCheck';
 

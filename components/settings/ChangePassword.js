@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { changePasswordHandler } from '../../helper/authHelperFunc';
-import Input from '../Input';
 import Account from '../UI/Account';
 import OptionWrapper from './OptionWrapper';
 
