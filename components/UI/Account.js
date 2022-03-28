@@ -4,7 +4,7 @@ import Loading from './Loading';
 
 const Account = ({ children, loading, error, type }) => {
   return (
-    <div className="flex flex-col my-8 text-white w-64 sm:w-70">
+    <div className="flex flex-col my-0 text-white w-64 sm:w-70">
       <div className="w-max mx-auto mb-2">
         {type && (
           <motion.h1

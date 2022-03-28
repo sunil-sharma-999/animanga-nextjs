@@ -20,7 +20,7 @@ const ReviewForm = ({ type, id }) => {
   const [value, setvalue] = useState('');
 
   const {
-    authCheck: authState,
+    authState: authState,
     userData: { username },
     reviews: { myreview, currentItemReviews },
   } = useSelector((state) => state);
@@ -111,7 +111,7 @@ const ReviewForm = ({ type, id }) => {
           {!!myreview && (
             <button
               name="delete"
-              className="bg-rose-700 w-max my-2 px-2 py-1 rounded-sm">
+              className="bg-red-500 w-max my-2 px-2 py-1 rounded-sm">
               <AiFillDelete />
             </button>
           )}

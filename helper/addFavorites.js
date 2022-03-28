@@ -1,7 +1,7 @@
 import { deleteField, doc, getDoc, updateDoc } from '@firebase/firestore';
 import { db } from '../firebase';
 
-const addFavorites = async ({ data, typename, authCheck }) => {
+const addFavorites = async ({ data, typename, authState }) => {
   const startDate =
     (data.aired && data.aired.from) ||
     (data.published && data.published.from) ||
@@ -27,7 +27,7 @@ const addFavorites = async ({ data, typename, authCheck }) => {
     type: data.type.toLowerCase() === 'manga' ? 'manga' : 'anime',
   };
 
-  const docRef = doc(db, 'users', authCheck);
+  const docRef = doc(db, 'users', authState);
 
   try {
     const res = await getDoc(docRef);

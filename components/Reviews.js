@@ -9,7 +9,7 @@ const Reviews = ({
   reviews: { currentItemReviews, myreview },
   mal_id,
 }) => {
-  const authState = useSelector((state) => state.authCheck);
+  const { authState } = useSelector((state) => state);
 
   const converter = new Showdown.Converter({
     tables: true,

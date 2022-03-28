@@ -5,17 +5,18 @@ import { authActions } from '../store/slices/authSlice';
 
 const useAuthCheck = () => {
   const dispatch = useDispatch();
-  const authCheck = useSelector((state) => state.authCheck);
+  const { authState } = useSelector((state) => state);
   useEffect(() => {
-    const subscribe = auth.onAuthStateChanged((data) => {
-      data
-        ? dispatch(authActions.checkAuth(data.uid))
-        : dispatch(authActions.checkAuth(null));
+    const unsubscribe = auth.onAuthStateChanged((data) => {
+      if (data) {
+        return dispatch(authActions.checkAuth(data.uid));
+      }
+      dispatch(authActions.checkAuth(null));
     });
-    return subscribe;
-  }, [authCheck, dispatch]);
+    return () => unsubscribe();
+  }, [dispatch]);
 
-  return authCheck;
+  return authState;
 };
 
 export default useAuthCheck;

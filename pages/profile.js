@@ -1,19 +1,13 @@
-import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import ProfileDetail from '../components/ProfileDetail';
-import Signin from '../components/Signin';
-import Signup from '../components/Signup';
-import Loading from '../components/UI/Loading';
+import Signin from '../components/auth/Signin';
 
-const Profile = ({ authProp }) => {
-  const [type, setType] = useState('signin');
-
+const Profile = () => {
+  const { authState } = useSelector((state) => state);
   return (
     <>
-      {authProp === 'loading' && <Loading />}
-      {authProp !== 'loading' && authProp && <ProfileDetail />}
-      {authProp === null && type === 'signup' && <Signup setType={setType} />}
-      {authProp === null && type === 'signin' && <Signin setType={setType} />}
+      {authState && <ProfileDetail />}
+      {authState === null && <Signin />}
     </>
   );
 };

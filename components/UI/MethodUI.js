@@ -1,14 +1,11 @@
+import Link from 'next/link';
 import React from 'react';
 
-const MethodUI = ({ msg, method, setType }) => {
+const MethodUI = ({ msg, method = 'signin' }) => {
   return (
-    <button
-      type="button"
-      className="rounded-md text-white/90 w-max m-auto"
-      to={`/account/${method}`}
-      onClick={() => setType(method)}>
-      {msg}
-    </button>
+    <Link href={`/${method}`}>
+      <a className="rounded-md text-white/90 w-max m-auto">{msg}</a>
+    </Link>
   );
 };
 

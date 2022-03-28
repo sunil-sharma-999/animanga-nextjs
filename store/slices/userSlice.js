@@ -13,12 +13,10 @@ const userSlice = createSlice({
     setData(state, action) {
       const { favorites, username } = action.payload;
       state.favList = Object.keys(action.payload.favorites);
-
+      state.username = username;
       Object.entries(favorites)
         .sort((a, b) => b[0].localeCompare(a[0]))
         .forEach(([key, fav]) => (state.favorites[key] = fav));
-
-      state.username = username;
     },
     updateFavorite(state, action) {
       const { data, typename } = action.payload;

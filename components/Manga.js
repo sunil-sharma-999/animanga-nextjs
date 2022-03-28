@@ -25,13 +25,13 @@ const Manga = ({ id }) => {
 
   const {
     userData: { favList },
-    authCheck,
+    authState,
   } = useSelector((state) => state);
 
   const { reviews } = useGetReviews({
     type: 'manga',
     id,
-    authState: authCheck,
+    authState: authState,
   });
 
   return (
@@ -56,7 +56,7 @@ const Manga = ({ id }) => {
               <div
                 className="fav overflow-hidden rounded-sm bg-white w-full text-4xl mt-2 text-black cursor-pointer py-1"
                 onClick={async () => {
-                  if (authCheck) {
+                  if (authState) {
                     dispatch(
                       userActions.updateFavorite({
                         data: results.data,
@@ -66,7 +66,7 @@ const Manga = ({ id }) => {
                     await addFavorites({
                       data: results.data,
                       typename: 'manga',
-                      authCheck,
+                      authState,
                     });
                   } else {
                     alert(

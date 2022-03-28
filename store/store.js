@@ -5,7 +5,7 @@ import reviewsSlice from './slices/reviewsSlice';
 import userReducer from './slices/userSlice';
 
 export const appReducer = combineReducers({
-  authCheck: authReducer,
+  authState: authReducer,
   userData: userReducer,
   reviews: reviewsSlice,
   [animangaApi.reducerPath]: animangaApi.reducer,

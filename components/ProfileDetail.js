@@ -1,13 +1,12 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { logOutHandler } from '../helper/authHelperFunc';
-import { authActions } from '../store/slices/authSlice';
 import Favorites from './Favorites';
 import { motion } from 'framer-motion';
+import { AiFillSetting } from 'react-icons/ai';
+import Link from 'next/link';
 
 const ProfileDetail = () => {
   const userData = useSelector((state) => state.userData);
-  const dispatch = useDispatch();
 
   return (
     <div className="profile text-center text-white my-4 p-4 w-full sm:max-w-screen-lg ">
@@ -15,15 +14,12 @@ const ProfileDetail = () => {
         <div
           className="card flex flex-col sm:flex-row-reverse sm:
         justify-between">
-          <button
-            className=" bg-white w-max mb-4 text-black py-2 px-4 self-end sm:m-0"
-            onClick={() => {
-              logOutHandler().then((res) => {
-                dispatch(authActions.logout());
-              });
-            }}>
-            Logout
-          </button>
+          <Link href="/settings">
+            <a className="text-3xl">
+              <AiFillSetting />
+            </a>
+          </Link>
+
           {userData.username && (
             <div className="text-4xl mx-auto flex-col sm:flex-row sm:m-0 flex">
               Welcome

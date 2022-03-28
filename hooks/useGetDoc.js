@@ -5,19 +5,19 @@ import { useDispatch } from 'react-redux';
 import { db } from '../firebase';
 import { userActions } from '../store/slices/userSlice';
 
-const useGetDoc = (collectionName) => {
+export const useGetDoc = (collectionName) => {
   const dispatch = useDispatch();
-  const { userData, authCheck } = useSelector((state) => state);
+  const { userData, authState } = useSelector((state) => state);
 
   useEffect(() => {
-    if (!authCheck) {
+    if (!authState) {
       return;
     }
-    getDoc(doc(db, collectionName, authCheck))
+    getDoc(doc(db, collectionName, authState))
       .then((res) => res.data())
       .then((data) => dispatch(userActions.setData(data)))
       .catch((err) => console.log(err));
-  }, [authCheck, dispatch, collectionName]);
+  }, [authState, dispatch, collectionName]);
 
   return { userData };
 };
