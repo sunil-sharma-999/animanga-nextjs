@@ -5,7 +5,7 @@ import { signUpHandler } from '../helper/authHelperFunc';
 import { motion } from 'framer-motion';
 import Input from '../components/Input';
 import { useRouter } from 'next/router';
-import useAuthCheck from '../hooks/useAuthCheck';
+import useAuthCheck from '../../hooks/useAuthCheck';
 
 const Signup = () => {
   const [error, seterror] = useState(null);

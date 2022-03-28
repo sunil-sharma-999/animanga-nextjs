@@ -3,8 +3,8 @@ import useAuthCheck from '../../hooks/useAuthCheck';
 import { signinHandler } from '../../helper/authHelperFunc';
 import Account from '../UI/Account';
 import MethodUI from '../UI/MethodUI';
-import Input from '../components/Input';
 import { useRouter } from 'next/router';
+import Input from '../form/Input';
 
 const Signin = () => {
   const [error, seterror] = useState(null);
