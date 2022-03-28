@@ -29,17 +29,19 @@
   - markdown review form
   - loading when review is being submitted
 
+- 3.1 ✅
+  - setting option added
+  - email verification email at signup
+  - update password and email option
+  - delete account option
+  - 
 Future Mini Goals 👷‍♂️
 
-- email verification
-- forgot password
+- forgot password option
 - update username (maybe)
-- show password icon on forms (unlikely)
-- adding profile pic (unlinkely)
+- profile pic option maybe
 
 [GitHub Pages for v1.0](https://sunil-sharma-999.github.io/animanga/)
-
-[Vercel for 2.0](https://animanga-kohl.vercel.app)
 
 [Vercel link for latest build](https://animanga-nextjs.vercel.app/)
 
