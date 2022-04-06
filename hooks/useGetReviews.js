@@ -19,7 +19,7 @@ const useGetReviews = ({ type, id, authState }) => {
               .map(([key, re]) => {
                 const isAuthor = key === authState;
                 isAuthor && dispatch(addMyreview(re.review));
-
+                console.log(isAuthor, re.date);
                 return {
                   ...re,
                   id: re.date.seconds,
@@ -28,7 +28,8 @@ const useGetReviews = ({ type, id, authState }) => {
                   date: new Date(re.date.seconds * 1000).toLocaleString(),
                 };
               })
-              .sort((a, b) => (b.areYouAuthor ? 1 : -1));
+              .sort((a, b) => b.seconds - a.seconds)
+              .sort((a, b) => Number(b.areYouAuthor) - Number(a.areYouAuthor));
             dispatch(addCurrentReview(data));
           } else {
             dispatch(addCurrentReview([]));

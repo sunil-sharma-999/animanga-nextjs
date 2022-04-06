@@ -3,7 +3,7 @@ import Cards from '../../components/Cards';
 
 const Index = () => {
   const {
-    query: { id = 1 },
+    query: { id },
   } = useRouter();
   return <Cards type="manga" page={id} />;
 };

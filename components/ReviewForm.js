@@ -3,15 +3,13 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import addReview from '../helper/addReview';
 import { deleteReview } from '../helper/deleteReview';
-import Loading from './UI/Loading';
 import BackButton from './BackButton';
 import { AiFillDelete } from 'react-icons/ai';
 import { useRouter } from 'next/router';
 import ReactMde from 'react-mde';
 import 'react-mde/lib/styles/css/react-mde-all.css';
 import Showdown from 'showdown';
-
-import useGetReviews from '../hooks/useGetReviews';
+import Loading from './UI/Loading';
 
 const ReviewForm = ({ type, id }) => {
   const [selectedTab, setSelectedTab] = React.useState('write');
@@ -24,8 +22,6 @@ const ReviewForm = ({ type, id }) => {
     userData: { username },
     reviews: { myreview, currentItemReviews },
   } = useSelector((state) => state);
-
-  useGetReviews({ type, id, authState });
 
   useEffect(() => {
     setvalue(myreview || '> hello world');
