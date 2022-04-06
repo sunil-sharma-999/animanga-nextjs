@@ -10,6 +10,9 @@ import { GoVerified } from 'react-icons/go';
 import { auth } from '../firebase';
 import { ChangePassword } from '../components/settings/ChangePassword';
 import ChangeEmail from '../components/settings/ChangeEmail';
+import { sendEmailVerification } from 'firebase/auth';
+import { useRef } from 'react';
+import VerificationBadge from '../components/settings/VerificationBadge';
 
 const initialSettingState = {
   changePassword: false,
@@ -38,14 +41,7 @@ const Settings = () => {
   return (
     <div className="grid max-w-screen-lg w-10/12 text-white my-20">
       <div className="flex w-full justify-between text-2xl items-center mb-8">
-        <p className="text flex items-center">
-          <GoVerified
-            className={`mr-2 ${
-              emailVerified ? 'text-green-500' : 'text-red-400'
-            }`}
-          />
-          {emailVerified ? 'Verified Account' : ' Email Not Verified'}
-        </p>
+        <VerificationBadge emailVerified={emailVerified} />
         <button
           className="w-max bg-red-500 sm:mx-0 px-4 py-2 text-white"
           onClick={() => {

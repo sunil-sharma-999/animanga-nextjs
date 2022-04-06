@@ -42,7 +42,7 @@ const Signin = () => {
             placeholder="* * * * * *"
             required={true}
           />
-          <MethodUI msg="Wanna Sign Up? Click On Me!" method="signup" />
+          <MethodUI msg="Want to Sign Up? SignUp !!!" method="signup" />
           <button className="bg-purple-700 rounded-md w-max m-auto py-2 px-4">
             SIGN IN!!!
           </button>

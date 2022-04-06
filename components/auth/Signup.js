@@ -54,7 +54,7 @@ const Signup = () => {
             placeholder="* * * * * *"
           />
 
-          <MethodUI msg="Want to Sign In? Click On Me" method="signin" />
+          <MethodUI msg="Want to Sign In? SignIn !!!" method="signin" />
           <motion.button className="bg-purple-700 rounded-md w-max m-auto py-2 px-4">
             SIGN UP!!!
           </motion.button>
