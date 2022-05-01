@@ -17,6 +17,21 @@
   }
 }
 
+.single-page {
+  @apply max-w-4xl w-full p-4 mb-8 relative text-white z-0 flex flex-col overflow-hidden;
+}
+
+details summary {
+  cursor: pointer;
+}
+/* details {
+  @apply break-words w-[90%];
+} */
+
+p {
+  overflow-wrap: break-word !important;
+}
+
 * {
   margin: 0;
   padding: 0;
