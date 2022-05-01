@@ -1,17 +1,15 @@
 import SinglePage from './singlepage/SinglePage';
 
 const availableAnimeFields = {
-  str: ['Type', 'Episodes', 'Source', 'Status'],
+  str: ['Rank', 'Type', 'Episodes', 'Source', 'Status'],
   otherInfo: ['Synopsis', 'Background'],
-  arrs: ['Themes', 'Demographics', 'Genres', 'Studios', 'Producers'],
+  arrs: ['Aired', 'Themes', 'Demographics', 'Genres', 'Studios', 'Producers'],
 
   filterAvailables: (data, fields) => {
     const availables = [];
     fields.map((field) => {
-      if (
-        data[field.toLocaleLowerCase()] &&
-        data[field.toLocaleLowerCase()].length > 0
-      ) {
+      console.log(field.toLocaleLowerCase());
+      if (data[field.toLocaleLowerCase()]) {
         availables.push(field);
       }
     });

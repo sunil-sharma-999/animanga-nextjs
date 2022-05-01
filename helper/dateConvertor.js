@@ -19,6 +19,6 @@ export const dateConvertor = (validDate, startDate, endDate) => {
         })
       : '';
 
-    return startDate + '-' + endDate;
+    return startDate + ' - ' + endDate;
   }
 };

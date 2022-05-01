@@ -6,6 +6,7 @@ import BackButton from '../BackButton';
 import Reviews from '../Reviews';
 import Loading from '../UI/Loading';
 import SinglePageImageWrap from './SinglePageImageWrap';
+import { dateConvertor } from '../../helper/dateConvertor';
 
 const SinglePage = ({ id, type, availableMediaFields }) => {
   const {
@@ -60,6 +61,19 @@ const SinglePage = ({ id, type, availableMediaFields }) => {
               {availableMediaFields
                 .filterAvailables(results.data, availableMediaFields.arrs)
                 .map((field) => {
+                  console.log(field);
+                  if (field === 'Aired' || field === 'Published') {
+                    return (
+                      <p key={field}>
+                        <span className="text-white">{field}: </span>
+                        {dateConvertor(
+                          false,
+                          results.data[field.toLocaleLowerCase()].from,
+                          results.data[field.toLocaleLowerCase()].to,
+                        )}
+                      </p>
+                    );
+                  }
                   return (
                     <p key={field}>
                       <span className="text-white">{field}: </span>

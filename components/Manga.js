@@ -1,16 +1,13 @@
 import SinglePage from './singlepage/SinglePage';
 
 const availableMangaFields = {
-  str: ['Type', 'Volumes', 'Chapters', 'Status'],
+  str: ['Rank', 'Type', 'Volumes', 'Chapters', 'Status'],
   otherInfo: ['Synopsis', 'Background'],
-  arrs: ['Themes', 'Demographics', 'Serializations', 'Authors'],
+  arrs: ['Published', 'Themes', 'Demographics', 'Serializations', 'Authors'],
   filterAvailables: (data, fields) => {
     const availables = [];
     fields.map((field) => {
-      if (
-        data[field.toLocaleLowerCase()] &&
-        data[field.toLocaleLowerCase()].length > 0
-      ) {
+      if (data[field.toLocaleLowerCase()]) {
         availables.push(field);
       }
     });
