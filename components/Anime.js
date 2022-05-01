@@ -10,6 +10,7 @@ import { useGetSingleItemQuery } from '../store/api/api';
 import useGetReviews from '../hooks/useGetReviews';
 import Image from 'next/image';
 import Recommendation from './Recommendation';
+import Link from 'next/link';
 
 const Anime = ({ id }) => {
   const dispatch = useDispatch();
@@ -56,7 +57,7 @@ const Anime = ({ id }) => {
                 />
               </div>
               <div
-                className="fav overflow-hidden rounded-sm bg-white w-full text-4xl mt-2 text-black cursor-pointer py-1"
+                className="fav overflow-hidden rounded-full bg-white text-4xl text-black cursor-pointer absolute top-1 left-1"
                 onClick={async () => {
                   if (authState) {
                     dispatch(
@@ -77,11 +78,16 @@ const Anime = ({ id }) => {
                   }
                 }}>
                 {favList.includes(`anime:${results.data.mal_id}`) ? (
-                  <IoHeartCircleSharp color="red" className="mx-auto" />
+                  <IoHeartCircleSharp color="red" />
                 ) : (
-                  <IoHeartCircleSharp className="mx-auto" />
+                  <IoHeartCircleSharp />
                 )}
               </div>
+              <Link href={`/anime/${id}/recommendation`} alt="recom">
+                <a className="text-white/80 bg-purple-800 block py-2 w-max px-4 mt-2">
+                  Recommendations
+                </a>
+              </Link>
             </div>
 
             <div className="info-wrap ml-0 sm:ml-4 w-full">
@@ -143,12 +149,6 @@ const Anime = ({ id }) => {
                   )}
                 </p>
               )}
-              <a
-                className="text-primary"
-                href={results.data.url}
-                alt="MAL link">
-                MAL Link
-              </a>
             </div>
           </div>
           <div className="bottom mt-4">
@@ -162,14 +162,6 @@ const Anime = ({ id }) => {
                 {results.data.background}
               </details>
             )}
-            {/* <div className="absolute">
-              <details className="w-full" open>
-                <summary className="text-lg text-white mb-2">
-                  Recommendations:{' '}
-                </summary>
-                <Recommendation type="anime" id={id} />
-              </details>
-            </div> */}
             <Reviews
               reviews={reviews}
               mal_id={results.data.mal_id}

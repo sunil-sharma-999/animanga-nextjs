@@ -9,6 +9,7 @@ import { useGetSingleItemQuery } from '../store/api/api';
 import useGetReviews from '../hooks/useGetReviews';
 import Image from 'next/image';
 import Recommendation from './Recommendation';
+import Link from 'next/link';
 
 const Manga = ({ id }) => {
   const dispatch = useDispatch();
@@ -55,7 +56,7 @@ const Manga = ({ id }) => {
                 />
               </div>
               <div
-                className="fav overflow-hidden rounded-sm bg-white w-full text-4xl mt-2 text-black cursor-pointer py-1"
+                className="fav overflow-hidden rounded-sm bg-white w-full text-4xl mt-2 text-black cursor-pointer py-1 absolute top-1 left-1"
                 onClick={async () => {
                   if (authState) {
                     dispatch(
@@ -76,11 +77,16 @@ const Manga = ({ id }) => {
                   }
                 }}>
                 {favList.includes(`manga:${results.data.mal_id}`) ? (
-                  <IoHeartCircleSharp color="red" className="mx-auto" />
+                  <IoHeartCircleSharp color="red" />
                 ) : (
-                  <IoHeartCircleSharp className="mx-auto" />
+                  <IoHeartCircleSharp />
                 )}
               </div>
+              <Link href={`/manga/${id}/recommendation`} alt="recom">
+                <a className="text-white/80 bg-purple-800 block py-2 w-max px-4 mt-2">
+                  Recommendations
+                </a>
+              </Link>
             </div>
 
             <div className="info-wrap ml-0 sm:ml-4 w-full">
@@ -142,7 +148,7 @@ const Manga = ({ id }) => {
                 </p>
               )}
               <a
-                className="text-blue-400"
+                className="text-purple-800"
                 href={results.data.url}
                 alt="MAL link">
                 MAL Link
@@ -164,12 +170,7 @@ const Manga = ({ id }) => {
                 {results.data.background}
               </details>
             )}
-            {/* <details className="mt-4 w-11/12" open>
-              <summary className="text-lg text-white mb-2">
-                Recommendations:
-              </summary>
-              <Recommendation type="manga" id={id} />
-            </details> */}
+
             <Reviews
               reviews={reviews}
               mal_id={results.data.mal_id}

@@ -9,7 +9,7 @@ import Image from 'next/image';
 const Card = (props) => {
   const dispatch = useDispatch();
   const { authState } = useSelector((state) => state);
-  const score = props.data.score || props.data.scored || '-';
+  const score = props.data.score || props.data.scored || false;
 
   return (
     <div className="card relative bg-slate-50 rounded-md overflow-hidden grid pb-14 content-start w-64">
@@ -70,11 +70,13 @@ const Card = (props) => {
           </div>
         </div>
         <p className="title text-black font-bold text-xl">{props.data.title}</p>
-        <p className="date">{props.date}</p>
-        <p className="score">
-          Score:
-          <span className="px-1 rounded-sm text-black ">{score}</span>
-        </p>
+        {props.date && <p className="date">{props.date}</p>}
+        {score && (
+          <p className="score">
+            Score:
+            <span className="px-1 rounded-sm text-black ">{score}</span>
+          </p>
+        )}
       </div>
 
       <Link prefetch={false} href={`/${props.type}/id/${props.data.mal_id}`}>
