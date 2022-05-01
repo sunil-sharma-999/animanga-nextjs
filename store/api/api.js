@@ -7,12 +7,18 @@ export const animangaApi = createApi({
   endpoints: (builder) => ({
     getTop: builder.query({
       query: ({ type = 'manga', page = 1, q = '' }) =>
-        q ? `${type}?q=${q.trim()}&page=${page}` : `top/${type}?page=${page}`,
+        q
+          ? `${type}?letter=${q.trim()}&page=${page}&order_by=members&sort=desc`
+          : `top/${type}?page=${page}`,
     }),
     getSingleItem: builder.query({
       query: ({ type, id }) => `${type}/${id}`,
     }),
+    getRecom: builder.query({
+      query: ({ type, id }) => `${type}/${id}/recommendations`,
+    }),
   }),
 });
 
-export const { useGetTopQuery, useGetSingleItemQuery } = animangaApi;
+export const { useGetTopQuery, useGetSingleItemQuery, useGetRecomQuery } =
+  animangaApi;
