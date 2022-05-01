@@ -9,6 +9,7 @@ import addFavorites from '../helper/addFavorites';
 import { useGetSingleItemQuery } from '../store/api/api';
 import useGetReviews from '../hooks/useGetReviews';
 import Image from 'next/image';
+import Recommendation from './Recommendation';
 
 const Anime = ({ id }) => {
   const dispatch = useDispatch();
@@ -36,7 +37,7 @@ const Anime = ({ id }) => {
   });
 
   return (
-    <div className="max-w-4xl w-full p-4 mb-8 relative text-white z-0 flex flex-col">
+    <div className="single-page">
       <BackButton />
       {isFetching && <Loading />}
       {!isFetching && isError && (
@@ -136,13 +137,14 @@ const Anime = ({ id }) => {
               {!!results.data.producers.length && (
                 <p>
                   <span className="text-white">Producers: </span>
-                  {results.data.producers.map((p) => (
-                    <span key={p.name}>{p.name}, </span>
-                  ))}
+                  {results.data.producers.reduce(
+                    (p1, p2) => p1 + `${p2.name}, `,
+                    '',
+                  )}
                 </p>
               )}
               <a
-                className="text-blue-400"
+                className="text-primary"
                 href={results.data.url}
                 alt="MAL link">
                 MAL Link
@@ -150,18 +152,24 @@ const Anime = ({ id }) => {
             </div>
           </div>
           <div className="bottom mt-4">
-            <div className="text-block max-w-5xl">
-              <p className="text-xl text-white">Synopsis</p>
-              <hr className="text-white my-2" />
-              <p>{results.data.synopsis}</p>
-            </div>
+            <details className="text-block max-w-5xl" open>
+              <summary className="text-lg text-white">Synopsis</summary>
+              {results.data.synopsis}
+            </details>
             {results.data.background && (
-              <div className="text-block mt-4 max-w-5xl">
-                <p className="text-xl text-white">Background</p>
-                <hr className="text-white my-2" />
-                <p>{results.data.background}</p>
-              </div>
+              <details className="text-block mt-4 max-w-5xl">
+                <summary className="text-lg text-white">Background</summary>
+                {results.data.background}
+              </details>
             )}
+            {/* <div className="absolute">
+              <details className="w-full" open>
+                <summary className="text-lg text-white mb-2">
+                  Recommendations:{' '}
+                </summary>
+                <Recommendation type="anime" id={id} />
+              </details>
+            </div> */}
             <Reviews
               reviews={reviews}
               mal_id={results.data.mal_id}

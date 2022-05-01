@@ -8,6 +8,7 @@ import addFavorites from '../helper/addFavorites';
 import { useGetSingleItemQuery } from '../store/api/api';
 import useGetReviews from '../hooks/useGetReviews';
 import Image from 'next/image';
+import Recommendation from './Recommendation';
 
 const Manga = ({ id }) => {
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ const Manga = ({ id }) => {
     type: 'manga',
     id,
   });
-
+  console.log(results);
   const {
     userData: { favList },
     authState,
@@ -35,7 +36,7 @@ const Manga = ({ id }) => {
   });
 
   return (
-    <div className="max-w-4xl w-full p-4 mb-8 relative text-white z-0 flex flex-col">
+    <div className="single-page">
       <BackButton />
       {isFetching && <Loading />}
       {!isFetching && isError && (
@@ -148,21 +149,27 @@ const Manga = ({ id }) => {
               </a>
             </div>
           </div>
+
           <div className="bottom mt-4">
             {results.data.synopsis && (
               <div className="text-block max-w-5xl">
                 <p className="text-xl text-white ">Synopsis</p>
                 <hr className="text-white my-2" />
-                <p>{results.data.synopsis}</p>
+                <p> {results.data.synopsis}</p>
               </div>
             )}
             {results.data.background && (
-              <div className="text-block mt-4 max-w-5xl">
-                <p className="text-xl text-white ">Background</p>
-                <hr className="text-white my-2" />
-                <p>{results.data.background}</p>
-              </div>
+              <details className="text-block mt-4 max-w-5xl">
+                <summary className="text-xl text-white ">Background</summary>
+                {results.data.background}
+              </details>
             )}
+            {/* <details className="mt-4 w-11/12" open>
+              <summary className="text-lg text-white mb-2">
+                Recommendations:
+              </summary>
+              <Recommendation type="manga" id={id} />
+            </details> */}
             <Reviews
               reviews={reviews}
               mal_id={results.data.mal_id}
