@@ -16,12 +16,11 @@ const Card = (props) => {
       <div className="img-wrap relative h-80 w-full text-center rounded-none">
         <Image
           layout="fill"
-          className="w-full flex justify-evenly items-center object-cover object-center h-full"
+          className="w-full flex justify-evenly items-center object-cover object-center h-full text-center"
           src={
             props.data.image_url ||
-            props.data.images.webp.image_url ||
             props.data.images.jpg.image_url ||
-            ''
+            props.data.images.webp.image_url
           }
           alt={props.data.title}
         />
