@@ -19,7 +19,6 @@ const useGetReviews = ({ type, id, authState }) => {
               .map(([key, re]) => {
                 const isAuthor = key === authState;
                 isAuthor && dispatch(addMyreview(re.review));
-                console.log(isAuthor, re.date);
                 return {
                   ...re,
                   id: re.date.seconds,
