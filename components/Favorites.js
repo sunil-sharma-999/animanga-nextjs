@@ -22,6 +22,7 @@ const Favorites = ({ data }) => {
         transition={{ type: 'spring', duration: 1, bounce: 0.5 }}>
         {Object.keys(data).length &&
           Object.entries(data).map(([key, fav]) => {
+            const type = key.split(':')[0];
             const dateType =
               !!Object.keys(data).length && isNaN(Date.parse(fav.start_date));
             return (
@@ -30,7 +31,7 @@ const Favorites = ({ data }) => {
                 data={fav}
                 id={fav.mal_id}
                 date={dateConvertor(dateType, fav.start_date, fav.end_date)}
-                type={fav.type.toLowerCase() === 'manga' ? 'manga' : 'anime'}
+                type={type.toLowerCase() === 'anime' ? 'anime' : 'manga'}
                 fav={true}
               />
             );

@@ -24,7 +24,7 @@ const addFavorites = async ({ data, typename, authState }) => {
     start_date: startDate,
     end_date: endDate,
     image_url: imageUrl,
-    type: data.type.toLowerCase() === 'manga' ? 'manga' : 'anime',
+    type: data.type,
   };
 
   const docRef = doc(db, 'users', authState);

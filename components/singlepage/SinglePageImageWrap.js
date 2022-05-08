@@ -3,9 +3,10 @@ import Link from 'next/link';
 import React from 'react';
 import { IoHeartCircleSharp } from 'react-icons/io5';
 import { useDispatch, useSelector } from 'react-redux';
+import addFavorites from '../../helper/addFavorites';
 import { userActions } from '../../store/slices/userSlice';
 
-const SinglePageImageWrap = ({ type, src, title, mal_id }) => {
+const SinglePageImageWrap = ({ type, src, title, mal_id, data }) => {
   const dispatch = useDispatch();
 
   const {
@@ -29,12 +30,12 @@ const SinglePageImageWrap = ({ type, src, title, mal_id }) => {
           if (authState) {
             dispatch(
               userActions.updateFavorite({
-                data: results.data,
+                data,
                 typename: type,
               }),
             );
             await addFavorites({
-              data: results.data,
+              data,
               typename: type,
               authState,
             });

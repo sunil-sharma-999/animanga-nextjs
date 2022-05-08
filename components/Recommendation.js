@@ -14,7 +14,7 @@ const Recommendation = ({ type, id }) => {
 
   if (isFetching) {
     return (
-      <div className="single-page text-black/100">
+      <div className="single-page my-8 text-black/100">
         <Loading />
       </div>
     );
@@ -23,7 +23,16 @@ const Recommendation = ({ type, id }) => {
   if (!isFetching && isError) {
     return (
       <div className="single-page text-black/100">
-        <h1 className="err w-max m-auto">{error.message}</h1>
+        <h1 className="err w-max m-auto my-8">{error.message}</h1>
+      </div>
+    );
+  }
+
+  if (isSuccess && data && !data.data.length) {
+    return (
+      <div className="single-page text-black/100">
+        <BackButton />
+        <h1 className="err w-max m-auto my-8">No Recommendation</h1>
       </div>
     );
   }

@@ -43,6 +43,7 @@ const SinglePage = ({ id, type, availableMediaFields }) => {
               title={results.data.title}
               mal_id={results.data.mal_id}
               type={type}
+              data={results.data}
             />
 
             <div className="info-wrap ml-0 sm:ml-4 w-full">
@@ -51,6 +52,9 @@ const SinglePage = ({ id, type, availableMediaFields }) => {
               </h1>
               <hr className="text-white my-2" />
               {availableMediaFields.str.map((field) => {
+                if (!results.data[field.toLowerCase()]) {
+                  return null;
+                }
                 return (
                   <p key={field}>
                     <span className="text-white">{field}: </span>
@@ -61,6 +65,10 @@ const SinglePage = ({ id, type, availableMediaFields }) => {
               {availableMediaFields
                 .filterAvailables(results.data, availableMediaFields.arrs)
                 .map((field) => {
+                  if (!results.data[field.toLowerCase()].length) {
+                    return null;
+                  }
+
                   if (field === 'Aired' || field === 'Published') {
                     return (
                       <p key={field}>
@@ -95,7 +103,8 @@ const SinglePage = ({ id, type, availableMediaFields }) => {
                     className="text-block mt-4 max-w-5xl"
                     open>
                     <summary className="text-xl text-white ">{field}</summary>
-                    {results.data[field.toLocaleLowerCase()]}
+                    {results.data[field.toLowerCase()] ||
+                      'No Information Found'}
                   </details>
                 );
               })}
