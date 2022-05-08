@@ -61,7 +61,6 @@ const SinglePage = ({ id, type, availableMediaFields }) => {
               {availableMediaFields
                 .filterAvailables(results.data, availableMediaFields.arrs)
                 .map((field) => {
-                  console.log(field);
                   if (field === 'Aired' || field === 'Published') {
                     return (
                       <p key={field}>

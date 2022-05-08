@@ -8,7 +8,6 @@ const availableAnimeFields = {
   filterAvailables: (data, fields) => {
     const availables = [];
     fields.map((field) => {
-      console.log(field.toLocaleLowerCase());
       if (data[field.toLocaleLowerCase()]) {
         availables.push(field);
       }
